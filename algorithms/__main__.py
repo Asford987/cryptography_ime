@@ -1,6 +1,5 @@
 import argparse
 
-
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('args', help='input values for the cryptography module')
@@ -29,3 +28,6 @@ def main():
             f.write(rsa.public_key)
         with open(args.private_key, 'wb') as f:
             f.write(rsa.private_key)
+
+if __name__ == '__main__':
+    main()
