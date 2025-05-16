@@ -1,20 +1,19 @@
 import argparse
 import json
+import tracemalloc
+import time
+
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('args', help='input values for the cryptography module')
-    parser.add_argument('--algorithm', choices=['kyber', 'rsa'], help='the algorithm to use', required=True)
+    parser.add_argument('--algorithm', choices=['saber', 'rsa'], help='the algorithm to use', required=True)
     parser.add_argument('--public-key', '-p', help='output file name for the public key', type=str, required=True)
     parser.add_argument('--private-key', '-q', help='output file name for the private key', type=str, required=True)
     parser.add_argument('--strength', '-s', help='the strength of the algorithm', type=int, default=2)
     parser.add_argument('--trace-memory', '-m', help='trace memory usage', action='store_true')
     parser.add_argument('--trace-time', '-t', help='trace time usage', action='store_true')
     return parser.parse_args()
-
-import time
-import tracemalloc
-import json
 
 def trace_memory(function, *args, **kwargs):
     tracemalloc.start()
@@ -67,27 +66,26 @@ def trace_time(function, *args, **kwargs):
             "microseconds": elapsed * 1_000_000
         }
     }
-
     
 def main():
     args = parse_args()
-    if args.algorithm == 'kyber':
-        from kyber import Kyber
-        kyber = Kyber()
+    if args.algorithm == 'saber':
+        from saber import Saber
+        saber = Saber()
         if args.trace_memory: 
-            metrics = trace_memory(kyber.generate_keypair, args.strength)
+            metrics = trace_memory(saber.generate_keypair, args.strength)
             with open('metrics_memory.json', 'w') as f:
                 json.dump(metrics, f)
         elif args.trace_time:
-            metrics = trace_time(kyber.generate_keypair, args.strength)
+            metrics = trace_time(saber.generate_keypair, args.strength)
             with open('metrics_time.json', 'w') as f:
                 json.dump(metrics, f)
         else:
-            kyber.generate_keypair(args.strength)
+            saber.generate_keypair(args.strength)
         with open(args.public_key, 'wb') as f:
-            f.write(kyber.public_key)
+            f.write(saber.public_key)
         with open(args.private_key, 'wb') as f:
-            f.write(kyber.private_key)
+            f.write(saber.private_key)
         
     if args.algorithm == 'rsa':
         from pyrsa import RSA

@@ -21,7 +21,6 @@ class RSA:
 
 
     def _is_prime(self, n, precision=40):
-        # print(f"Verifying if {n} is prime...")
         if n <= 1:
             return False
         if n <= 3:
@@ -36,7 +35,6 @@ class RSA:
             if n % p == 0:
                 return False
         
-        # Para números maiores, usar o teste de Miller-Rabin
         return self._miller_rabin_test(n, k=precision)
             
     
@@ -52,8 +50,6 @@ class RSA:
 
 
     def generate_keypair(self, bits=1024):
-        """Gera um par de chaves RSA"""
-        print(f"Generating keypair...")
         p = self._generate_prime(bits // 2)
         q = self._generate_prime(bits // 2)
 
@@ -72,8 +68,6 @@ class RSA:
         self._generated = True
         self._pubkey = (e, n)
         self._privkey = (d, n)
-        print(f"Keypair generated")
-
 
     def encripty(self, msg:str)->str:
         if not self._generated: raise RuntimeError("Key pair not generated")
@@ -83,15 +77,12 @@ class RSA:
         encripted_msg = pow(parsed_msg, self._pubkey[0], self._pubkey[1])
         return encripted_msg
 
-
     def decripty(self, encripted_msg:int)->str:
         if not self._generated: raise RuntimeError("Key pair not generated")
         
-        print(f"Decrypting message: {encripted_msg}")
         decripted_msg:int = pow(encripted_msg, self._privkey[0], self._privkey[1])
         text:str = self._int_to_text(decripted_msg)
         return text
-
 
     def _get_mod_inverse(self, inverse:int, modulo:int)->int:
         x = [1,0]
@@ -124,21 +115,17 @@ class RSA:
 
 
     def _text_to_int(self, message):
-        """Converte um texto em um número inteiro usando valores ASCII"""
         result = 0
         for char in message:
             result = result * 256 + ord(char)
         return result
 
-
     def _int_to_text(self, number):
-        """Converte um número inteiro de volta para texto"""
         text = ""
         while number > 0:
             text = chr(number % 256) + text
             number //= 256
         return text
-    
     
     def _miller_rabin_test(self, n, k=40):
         if n <= 1:
@@ -148,13 +135,11 @@ class RSA:
         if n % 2 == 0:
             return False
         
-        # Escrever n como 2^r * d + 1
         r, d = 0, n - 1
         while d % 2 == 0:
             r += 1
             d //= 2
         
-        # Realizar k testes
         for _ in range(k):
             a = random.randint(2, n - 2)
             x = pow(a, d, n)
@@ -169,7 +154,6 @@ class RSA:
                 return False
         
         return True
-
 
 
 if __name__ == "__main__":
