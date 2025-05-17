@@ -2,6 +2,7 @@ import argparse
 import json
 import tracemalloc
 import time
+import pickle
 
 
 def parse_args():
@@ -82,9 +83,9 @@ def main():
         else:
             saber.generate_keypair()
         with open(args.public_key, 'wb') as f:
-            f.write(saber.public_key)
+            pickle.dump(saber.public_key, f)
         with open(args.private_key, 'wb') as f:
-            f.write(saber.private_key)
+            pickle.dump(saber.private_key, f)
         
     if args.algorithm == 'rsa':
         from pyrsa import RSA
@@ -100,9 +101,9 @@ def main():
         else:
             rsa.generate_keypair()
         with open(args.public_key, 'wb') as f:
-            f.write(rsa.public_key)
+            pickle.dump(rsa.public_key, f)
         with open(args.private_key, 'wb') as f:
-            f.write(rsa.private_key)
+            pickle.dump(rsa.private_key, f)
 
 if __name__ == '__main__':
     main()
