@@ -33,7 +33,7 @@ def trace_memory(function, *args, **kwargs):
             "lineno": stat.traceback[0].lineno,
             "size_kb": stat.size / 1024,
             "count": stat.count,
-            "line": stat.traceback[0].line
+            # "line": stat.traceback[0].line,
         })
 
     return {

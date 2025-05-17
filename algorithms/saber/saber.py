@@ -27,7 +27,7 @@ class Saber:
             res[i - self.n] = (res[i - self.n] + res[i]) % self.q
         return [x % self.q for x in res[:self.n]]
 
-    def generate_keypair(self):
+    def generate_keypair(self, *args, **kwargs):
         A = [[self._random_poly() for _ in range(self.l)] for _ in range(self.l)]
         s = [self._random_poly() for _ in range(self.l)]
 
@@ -43,65 +43,73 @@ class Saber:
         self._generated = True
         print("Keypair generated.")
 
-    def encripty(self, message: str) -> tuple:
+    def encripty(self, message: str) -> list:
         if not self._generated:
             raise RuntimeError("Key pair not generated")
-
-        m = ord(message[0]) % self.p
 
         A, b = self._pubkey
-        sp = [self._random_poly() for _ in range(self.l)]
+        ciphertext = []
 
-        bp = []
-        for i in range(self.l):
-            acc = [0] * self.n
-            for j in range(self.l):
-                acc = self._poly_add(acc, self._poly_mul(A[j][i], sp[j]))
-            bp.append(acc)
+        for ch in message:
+            m = ord(ch) % self.p
+            sp = [self._random_poly() for _ in range(self.l)]
 
-        vp = [0] * self.n
-        for i in range(self.l):
-            vp = self._poly_add(vp, self._poly_mul(b[i], sp[i]))
+            bp = []
+            for i in range(self.l):
+                acc = [0] * self.n
+                for j in range(self.l):
+                    acc = self._poly_add(acc, self._poly_mul(A[j][i], sp[j]))
+                bp.append(acc)
 
-        vp[0] = (vp[0] + (m * (self.q // self.p))) % self.q
+            vp = [0] * self.n
+            for i in range(self.l):
+                vp = self._poly_add(vp, self._poly_mul(b[i], sp[i]))
 
-        return (bp, vp)
+            vp[0] = (vp[0] + (m * (self.q // self.p))) % self.q
+            ciphertext.append((bp, vp))
 
-    def decripty(self, ciphertext: tuple) -> str:
+        return ciphertext
+
+    def decripty(self, ciphertext: list) -> str:
         if not self._generated:
             raise RuntimeError("Key pair not generated")
 
-        bp, vp = ciphertext
         s = self._privkey
+        message = ""
 
-        v = [0] * self.n
-        for i in range(self.l):
-            v = self._poly_add(v, self._poly_mul(bp[i], s[i]))
+        for bp, vp in ciphertext:
+            v = [0] * self.n
+            for i in range(self.l):
+                v = self._poly_add(v, self._poly_mul(bp[i], s[i]))
 
-        diff = (vp[0] - v[0]) % self.q
-        m = int((diff * self.p) / self.q) % self.p
-        return chr(m)
+            diff = (vp[0] - v[0]) % self.q
+            m = int((diff * self.p) / self.q) % self.p
+            message += chr(m)
+
+        return message
+            
 
     @property
     def public_key(self):
         if not self._generated:
             raise RuntimeError("Key pair not generated")
-        return self._pubkey
+        return (str(self._pubkey[0]) + str(self._pubkey[1])).encode('utf-8')
 
     @property
     def private_key(self):
         if not self._generated:
             raise RuntimeError("Key pair not generated")
-        return self._privkey
+        return (str(self._privkey)).encode('utf-8')
 
 
 if __name__ == "__main__":
     saber = Saber()
-    msg = "H"
+    msg = "Asford is mega mega gay 5126357@&@!#^"
     print(f"Original: {msg}")
 
     saber.generate_keypair()
     ct = saber.encripty(msg)
+    print(f"Ciphertext: {ct}")
     dec = saber.decripty(ct)
 
     print(f"Decrypted: {dec}")

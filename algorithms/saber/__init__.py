@@ -1,1 +1,1 @@
-from algorithms.saber.saber import Saber
+from .saber import Saber
