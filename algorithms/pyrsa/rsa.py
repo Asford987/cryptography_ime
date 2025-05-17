@@ -4,6 +4,7 @@ import tracemalloc
 import psutil
 import os
 from functools import wraps
+import codecs
 
 def measure_performance(func):
     @wraps(func)
@@ -104,7 +105,19 @@ class RSA:
 
 
     @measure_performance
-    def generate_keypair(self, bits=1024):
+    def generate_keypair(self, bits=2048):
+        """
+        Gera um par de chaves RSA.
+        Para mensagens grandes, é recomendado usar bits >= 2048.
+        
+        Args:
+            bits: Tamanho da chave em bits. Padrão: 2048.
+        """
+        # Para textos longos, verificamos se o tamanho da chave é suficiente
+        if bits < 2048:
+            print("AVISO: Para textos longos ou com muitos caracteres especiais,")
+            print("       é recomendado usar chaves de pelo menos 2048 bits.")
+            
         p = self._generate_prime(bits // 2)
         q = self._generate_prime(bits // 2)
 
@@ -127,25 +140,119 @@ class RSA:
         self._generated = True
         self._pubkey = (e, n)
         self._privkey = (d, n)
+        
+        # Verificar e exibir o tamanho máximo da mensagem em bytes
+        max_bytes = (bits // 8) - 11  # Usando uma margem de segurança
+        print(f"Tamanho máximo da mensagem: aproximadamente {max_bytes} bytes")
+        print(f"Isso equivale a cerca de {max_bytes // 4} caracteres UTF-8 típicos")
 
 
     @measure_performance
-    def encripty(self, msg:str)->str:
+    def encripty(self, msg:str)->list:
+        """
+        Criptografa uma mensagem usando a chave pública.
+        Para mensagens longas, divide em blocos compatíveis com o tamanho da chave.
+        
+        Args:
+            msg: A mensagem a ser criptografada
+            
+        Returns:
+            Uma lista de inteiros representando os blocos criptografados
+        """
         if not self._generated: raise RuntimeError("Key pair not generated")
         
-        print(f"Encrypting message: {msg}")
-        parsed_msg:int = self._text_to_int(msg)
-        encripted_msg = pow(parsed_msg, self._pubkey[0], self._pubkey[1])
-        return encripted_msg
+        print(f"Criptografando mensagem de {len(msg)} caracteres ({len(msg.encode('utf-8'))} bytes)")
+        
+        # Calcular o tamanho máximo de cada bloco em bytes
+        # n é o módulo RSA, cujo tamanho em bytes determina o limite máximo
+        key_size_bytes = (self._pubkey[1].bit_length() + 7) // 8
+        max_block_size = key_size_bytes - 11  # Margem de segurança
+        
+        # Converter a mensagem em bytes
+        message_bytes = msg.encode('utf-8')
+        total_bytes = len(message_bytes)
+        
+        # Dividir em blocos se necessário
+        encrypted_blocks = []
+        
+        if total_bytes <= max_block_size:
+            # Mensagem pequena, não precisa dividir
+            parsed_msg = self._text_to_int(msg)
+            encrypted_blocks.append(pow(parsed_msg, self._pubkey[0], self._pubkey[1]))
+            print(f"Mensagem criptografada em um único bloco")
+        else:
+            # Mensagem grande, dividir em blocos
+            num_blocks = (total_bytes + max_block_size - 1) // max_block_size  # Arredondamento para cima
+            print(f"Dividindo mensagem em {num_blocks} blocos")
+            
+            for i in range(0, total_bytes, max_block_size):
+                # Obter o bloco atual
+                block = message_bytes[i:i + max_block_size]
+                
+                # Converter para inteiro
+                block_int = 0
+                for byte in block:
+                    block_int = (block_int << 8) | byte
+                
+                # Criptografar o bloco
+                encrypted_block = pow(block_int, self._pubkey[0], self._pubkey[1])
+                encrypted_blocks.append(encrypted_block)
+                
+            print(f"Criptografia concluída: {len(encrypted_blocks)} blocos gerados")
+        
+        return encrypted_blocks
 
 
     @measure_performance
-    def decripty(self, encripted_msg:int)->str:
+    def decripty(self, encrypted_data)->str:
+        """
+        Descriptografa dados usando a chave privada.
+        Suporta tanto um único valor inteiro quanto uma lista de blocos criptografados.
+        
+        Args:
+            encrypted_data: Um inteiro ou lista de inteiros representando dados criptografados
+            
+        Returns:
+            A mensagem descriptografada
+        """
         if not self._generated: raise RuntimeError("Key pair not generated")
         
-        decripted_msg:int = pow(encripted_msg, self._privkey[0], self._privkey[1])
-        text:str = self._int_to_text(decripted_msg)
-        return text
+        # Verificar se é um bloco único ou múltiplos blocos
+        if isinstance(encrypted_data, int):
+            # Bloco único
+            decrypted_int = pow(encrypted_data, self._privkey[0], self._privkey[1])
+            text = self._int_to_text(decrypted_int)
+            print(f"Mensagem descriptografada em um único bloco")
+            return text
+        elif isinstance(encrypted_data, list):
+            # Múltiplos blocos
+            print(f"Descriptografando {len(encrypted_data)} blocos")
+            result_parts = []
+            
+            for i, block in enumerate(encrypted_data):
+                # Descriptografar cada bloco
+                decrypted_int = pow(block, self._privkey[0], self._privkey[1])
+                
+                # Converter para bytes
+                bytes_array = []
+                while decrypted_int > 0:
+                    bytes_array.append(decrypted_int & 0xFF)
+                    decrypted_int >>= 8
+                
+                bytes_array.reverse()
+                
+                # Adicionar à lista de partes
+                try:
+                    part = bytes(bytes_array).decode('utf-8', errors='replace')
+                    result_parts.append(part)
+                except Exception as e:
+                    print(f"Erro ao decodificar bloco {i}: {e}")
+                    result_parts.append("?")
+            
+            # Juntar todas as partes
+            return "".join(result_parts)
+        else:
+            raise ValueError("Formato de dados criptografados inválido")
 
 
     @measure_performance 
@@ -180,18 +287,57 @@ class RSA:
 
 
     def _text_to_int(self, message):
+        """
+        Converte texto para inteiro usando codificação UTF-8
+        para suportar adequadamente caracteres acentuados
+        """
+        # Codificar a mensagem em bytes usando UTF-8
+        message_bytes = message.encode('utf-8')
+        
+        # Converter bytes para um número inteiro
         result = 0
-        for char in message:
-            result = result * 256 + ord(char)
+        for byte in message_bytes:
+            result = (result << 8) | byte
+            
         return result
 
 
     def _int_to_text(self, number):
-        text = ""
+        """
+        Converte um inteiro de volta para texto usando UTF-8
+        """
+        # Converter número para bytes
+        bytes_array = []
         while number > 0:
-            text = chr(number % 256) + text
-            number //= 256
-        return text
+            bytes_array.append(number & 0xFF)
+            number >>= 8
+            
+        # Reverter a ordem dos bytes
+        bytes_array.reverse()
+        
+        # Converter bytes para texto usando UTF-8
+        try:
+            # Converter lista de bytes para bytes object
+            byte_data = bytes(bytes_array)
+            
+            # Verificar se os bytes são válidos antes de decodificar
+            if not byte_data:
+                return ""
+                
+            # Decodificar bytes para texto com tratamento de erro
+            return byte_data.decode('utf-8', errors='replace')
+            
+        except Exception as e:
+            print(f"Erro ao decodificar: {e}")
+            print(f"Bytes: {bytes_array[:20]}{'...' if len(bytes_array) > 20 else ''}")
+            
+            # Tentar recuperar ao menos parte do texto
+            try:
+                # Tentar decodificar ignorando caracteres problemáticos
+                return bytes(bytes_array).decode('utf-8', errors='ignore')
+            except:
+                # Em último caso, fazer uma representação básica
+                return "".join([chr(b) if 32 <= b < 127 else '?' for b in bytes_array])
     
     
     def _miller_rabin_test(self, n, k=40):
@@ -266,48 +412,3 @@ class RSA:
         print(f"  Tempo médio por chamada: {self.performance_stats['miller_rabin']['total_time']/max(1,self.performance_stats['miller_rabin']['total_calls']):.6f} segundos")
         
         print("="*50)
-
-
-if __name__ == "__main__":
-    def format_big_num(num):
-        return str(num)[:50] + "..." if len(str(num)) > 50 else str(num)
-    
-    rsa = RSA()
-    mensagem = "Bom dia, Espírito Santo!"
-
-    print("\nIniciando teste de performance do RSA\n")
-    
-    process = psutil.Process(os.getpid())
-    start_memory = process.memory_info().rss / 1024  # KB
-    
-    tracemalloc.start()
-    start_time = time.time()
-    
-    rsa.generate_keypair()
-    rsa.export_keys()
-    
-    e, n = rsa.public_key
-    d, _ = rsa.private_key
-    print(f"public key: (e={format_big_num(e)}, n={format_big_num(n)})")
-    print(f"private key: (d={format_big_num(d)}, n={format_big_num(n)})")
-    
-    encripted_msg = rsa.encripty(mensagem)
-    decripted_msg = rsa.decripty(encripted_msg)
-    print(f"Mensagem decriptada: {decripted_msg}")
-    
-    end_time = time.time()
-    total_time = end_time - start_time
-    current, peak = tracemalloc.get_traced_memory()
-    tracemalloc.stop()
-    end_memory = process.memory_info().rss / 1024  # KB
-    
-    print(f"\n{'='*50}")
-    print(f"PERFORMANCE TOTAL:")
-    print(f"Tempo total de execução: {total_time:.6f} segundos")
-    print(f"Memória inicial do processo: {start_memory:.2f} KB")
-    print(f"Memória final do processo: {end_memory:.2f} KB")
-    print(f"Diferença de memória: {end_memory - start_memory:.2f} KB")
-    print(f"Pico de uso de memória (tracemalloc): {peak / 1024:.2f} KB")
-    print(f"{'='*50}")
-    
-    rsa.print_performance_stats()
