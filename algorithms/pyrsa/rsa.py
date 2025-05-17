@@ -59,7 +59,7 @@ class RSA:
         e = 65537
         while True:
             try:
-                d = self._get_mod_inverse(e, phi)
+                d = self._get_inverse_mod(e, phi)
                 break
             except:
                 e += 2
@@ -69,6 +69,7 @@ class RSA:
         self._pubkey = (e, n)
         self._privkey = (d, n)
 
+
     def encripty(self, msg:str)->str:
         if not self._generated: raise RuntimeError("Key pair not generated")
         
@@ -77,6 +78,7 @@ class RSA:
         encripted_msg = pow(parsed_msg, self._pubkey[0], self._pubkey[1])
         return encripted_msg
 
+
     def decripty(self, encripted_msg:int)->str:
         if not self._generated: raise RuntimeError("Key pair not generated")
         
@@ -84,7 +86,8 @@ class RSA:
         text:str = self._int_to_text(decripted_msg)
         return text
 
-    def _get_mod_inverse(self, inverse:int, modulo:int)->int:
+
+    def _get_inverse_mod(self, inverse:int, modulo:int)->int:
         x = [1,0]
         y = [0,1]
         r = [modulo, inverse]
@@ -120,12 +123,14 @@ class RSA:
             result = result * 256 + ord(char)
         return result
 
+
     def _int_to_text(self, number):
         text = ""
         while number > 0:
             text = chr(number % 256) + text
             number //= 256
         return text
+    
     
     def _miller_rabin_test(self, n, k=40):
         if n <= 1:
@@ -154,14 +159,26 @@ class RSA:
                 return False
         
         return True
+    
+    
+    def export_keys(self):
+        with open('rsa_private_key.txt', 'w') as f1:
+            f1.write(f"---------- RSA Private Key ----------\n\n")
+            f1.write(f"d: {self._privkey[0]}\n")
+            f1.write(f"n: {self._privkey[1]}\n")
+
+        with open('rsa_public_key.txt', 'w') as f2:
+            f2.write(f"---------- RSA Public Key ----------\n\n")
+            f2.write(f"e: {self._pubkey[0]}\n")
+            f2.write(f"n: {self._pubkey[1]}\n")
 
 
 if __name__ == "__main__":
     rsa = RSA()
     mensagem = "Bom dia, Espírito Santo!"
-    print(mensagem)
 
     rsa.generate_keypair()
+    rsa.export_keys()
     print(f"public key: {rsa.public_key}")
     print(f"private key: {rsa.private_key}")
     encripted_msg = rsa.encripty(mensagem)
