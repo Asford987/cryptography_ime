@@ -10,7 +10,6 @@ def parse_args():
     parser.add_argument('--algorithm', choices=['saber', 'rsa'], help='the algorithm to use', required=True)
     parser.add_argument('--public-key', '-p', help='output file name for the public key', type=str, required=True)
     parser.add_argument('--private-key', '-q', help='output file name for the private key', type=str, required=True)
-    parser.add_argument('--strength', '-s', help='the strength of the algorithm', type=int, default=2)
     parser.add_argument('--trace-memory', '-m', help='trace memory usage', action='store_true')
     parser.add_argument('--trace-time', '-t', help='trace time usage', action='store_true')
     return parser.parse_args()
@@ -73,15 +72,15 @@ def main():
         from saber import Saber
         saber = Saber()
         if args.trace_memory: 
-            metrics = trace_memory(saber.generate_keypair, args.strength)
+            metrics = trace_memory(saber.generate_keypair)
             with open('metrics_memory.json', 'w') as f:
                 json.dump(metrics, f)
         elif args.trace_time:
-            metrics = trace_time(saber.generate_keypair, args.strength)
+            metrics = trace_time(saber.generate_keypair)
             with open('metrics_time.json', 'w') as f:
                 json.dump(metrics, f)
         else:
-            saber.generate_keypair(args.strength)
+            saber.generate_keypair()
         with open(args.public_key, 'wb') as f:
             f.write(saber.public_key)
         with open(args.private_key, 'wb') as f:
@@ -91,15 +90,15 @@ def main():
         from pyrsa import RSA
         rsa = RSA()
         if args.trace_memory: 
-            metrics = trace_memory(rsa.generate_keypair, args.strength)
+            metrics = trace_memory(rsa.generate_keypair)
             with open('metrics_memory.json', 'w') as f:
                 json.dump(metrics, f)
         elif args.trace_time:
-            metrics = trace_time(rsa.generate_keypair, args.strength)
+            metrics = trace_time(rsa.generate_keypair)
             with open('metrics_time.json', 'w') as f:
                 json.dump(metrics, f)
         else:
-            rsa.generate_keypair(args.strength)
+            rsa.generate_keypair()
         with open(args.public_key, 'wb') as f:
             f.write(rsa.public_key)
         with open(args.private_key, 'wb') as f:
