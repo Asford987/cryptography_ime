@@ -147,7 +147,6 @@ class RSA:
         print(f"Isso equivale a cerca de {max_bytes // 4} caracteres UTF-8 típicos")
 
 
-    @measure_performance
     def encripty(self, msg:str)->list:
         """
         Criptografa uma mensagem usando a chave pública.
@@ -203,7 +202,6 @@ class RSA:
         return encrypted_blocks
 
 
-    @measure_performance
     def decripty(self, encrypted_data)->str:
         """
         Descriptografa dados usando a chave privada.
@@ -255,7 +253,6 @@ class RSA:
             raise ValueError("Formato de dados criptografados inválido")
 
 
-    @measure_performance 
     def _get_inverse_mod(self, inverse:int, modulo:int)->int:
         x = [1,0]
         y = [0,1]
@@ -391,9 +388,13 @@ class RSA:
             f2.write(f"n: {self._pubkey[1]}\n")
     
     
-    def print_performance_stats(self):
+    def print_keygen_stats(self):
+        """
+        Imprime estatísticas detalhadas sobre o processo de geração de chaves,
+        focando apenas nos métodos _generate_prime e generate_keypair
+        """
         print("\n" + "="*50)
-        print("ESTATÍSTICAS DETALHADAS:")
+        print("ESTATÍSTICAS DE GERAÇÃO DE CHAVES:")
         
         print("\nGeração de números primos:")
         total_time = sum(item['time'] for item in self.performance_stats['prime_gen'])
@@ -406,7 +407,7 @@ class RSA:
         print(f"Tempo total de geração de primos: {total_time:.6f} segundos")
         print(f"Média de tentativas por primo: {total_attempts/len(self.performance_stats['prime_gen']):.1f}")
         
-        print("\nTeste de Miller-Rabin:")
+        print("\nTeste de Miller-Rabin (usado na verificação de primalidade):")
         print(f"  Total de chamadas: {self.performance_stats['miller_rabin']['total_calls']}")
         print(f"  Tempo total: {self.performance_stats['miller_rabin']['total_time']:.6f} segundos")
         print(f"  Tempo médio por chamada: {self.performance_stats['miller_rabin']['total_time']/max(1,self.performance_stats['miller_rabin']['total_calls']):.6f} segundos")

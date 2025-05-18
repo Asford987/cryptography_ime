@@ -1,0 +1,371 @@
+
+RELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES RSA DE 2048 BITS
+Data e hora: 2025-05-18 13:58:23
+==================================================
+
+
+TESTE #1 DE 5
+--------------------------------------------------
+Prime generated: 142436157183554732078040421624302997968139887048160379091625313508642627689485723602812260346573291452833777134559210143720192647845599996096328068811762723269399179211851466395409762175114161879785160696977918110011076848484898957899837951123785173542000204012204017046808585001869612117367771829432872499977
+Generated in 0.986026 seconds after 68 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.986026 segundos
+Memória inicial: 18668.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 32.00 KB
+Pico de uso de memória (tracemalloc): 6.13 KB
+==================================================
+Prime generated: 103566186073227175481688486248743603629307497884507921895050356167453402304570780617466531236417899457694541846941817783770745949085762736850671455671239447217331701565184590697928188061814405476032715174780684119241801047284817964102306592458273475317627873147878672563033454772203567957460028415979336932683
+Generated in 0.900658 seconds after 110 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.900658 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.10 KB
+==================================================
+Inverso multiplicativo calculado em 0.000000 segundos.
+Tamanho máximo da mensagem: aproximadamente 245 bytes
+Isso equivale a cerca de 61 caracteres UTF-8 típicos
+
+==================================================
+Performance de generate_keypair:
+Tempo de execução: 1.886684 segundos
+Memória inicial: 18664.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 36.00 KB
+Pico de uso de memória (tracemalloc): 0.00 KB
+==================================================
+Chave pública (e): 65537
+Módulo (n): 14751569558427463000592027250252352037037420130557...
+
+Estatísticas do teste #1:
+  Tempo total de geração do par de chaves: 1.886684 segundos
+  Memória utilizada: 36.00 KB
+  Primo 1: 1024 bits, 68 tentativas, 0.986026 segundos
+  Primo 2: 1024 bits, 110 tentativas, 0.900658 segundos
+
+Teste de Miller-Rabin (verificação de primalidade):
+  Total de chamadas: 55
+  Tempo total: 1.881847 segundos
+  Tempo médio por chamada: 0.03421539 segundos
+
+==================================================
+ESTATÍSTICAS DE GERAÇÃO DE CHAVES:
+
+Geração de números primos:
+  Primo 1: 1024 bits, 68 tentativas, 0.986026 segundos
+  Primo 2: 1024 bits, 110 tentativas, 0.900658 segundos
+
+Total de números primos gerados: 2
+Tempo total de geração de primos: 1.886684 segundos
+Média de tentativas por primo: 89.0
+
+Teste de Miller-Rabin (usado na verificação de primalidade):
+  Total de chamadas: 55
+  Tempo total: 1.881847 segundos
+  Tempo médio por chamada: 0.034215 segundos
+==================================================
+
+
+TESTE #2 DE 5
+--------------------------------------------------
+Prime generated: 125099221351648817949531590384759632216975573114233286390068856354365201736998874029338840613561688424046084262798654969900334839866759064138867664711809819777670211018717586348330238443016351329281981462149782110222448305040986120819715960988043819699921969893299277994457848436022439468219263657816873460491
+Generated in 0.626190 seconds after 28 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.626190 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.84 KB
+==================================================
+Prime generated: 157484547855909666139971396349318823750082310965867153674911196039254930247467627666831572789469140267163422694183705545952475223888370753173951172211518023480627116559098695059579027955765723784339387974020722238625485958286602395502021303627576055303267346923348171512272749423874923242930006717425883310731
+Generated in 0.684610 seconds after 43 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.684610 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.10 KB
+==================================================
+Inverso multiplicativo calculado em 0.000000 segundos.
+Tamanho máximo da mensagem: aproximadamente 245 bytes
+Isso equivale a cerca de 61 caracteres UTF-8 típicos
+
+==================================================
+Performance de generate_keypair:
+Tempo de execução: 1.310800 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 0.00 KB
+==================================================
+Chave pública (e): 65537
+Módulo (n): 19701194311690774579327572389214619571000373642276...
+
+Estatísticas do teste #2:
+  Tempo total de geração do par de chaves: 1.310800 segundos
+  Memória utilizada: 0.00 KB
+  Primo 1: 1024 bits, 28 tentativas, 0.626190 segundos
+  Primo 2: 1024 bits, 43 tentativas, 0.684610 segundos
+
+Teste de Miller-Rabin (verificação de primalidade):
+  Total de chamadas: 27
+  Tempo total: 1.310800 segundos
+  Tempo médio por chamada: 0.04854815 segundos
+
+==================================================
+ESTATÍSTICAS DE GERAÇÃO DE CHAVES:
+
+Geração de números primos:
+  Primo 1: 1024 bits, 28 tentativas, 0.626190 segundos
+  Primo 2: 1024 bits, 43 tentativas, 0.684610 segundos
+
+Total de números primos gerados: 2
+Tempo total de geração de primos: 1.310800 segundos
+Média de tentativas por primo: 35.5
+
+Teste de Miller-Rabin (usado na verificação de primalidade):
+  Total de chamadas: 27
+  Tempo total: 1.310800 segundos
+  Tempo médio por chamada: 0.048548 segundos
+==================================================
+
+
+TESTE #3 DE 5
+--------------------------------------------------
+Prime generated: 165456943792329954722787865493308464748526038498093999723514187720309678458869308183398407411868155860578482981974505201057157202072560638988190574197450769619649501224629390541544791734331181115851377122183016425290596579792443162914110498950475553209424832406497476144310596826127919340299585512393468902409
+Generated in 1.568951 seconds after 321 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 1.568951 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.77 KB
+==================================================
+Prime generated: 93432271055633307663434124894767154362912835402621432560524836802974977211362865914259111969818546157878729079617450851820303123151848089908936206595292610074016158018217173694725443807659593589913034718294316579050565779004292960377078432401680115807972503221077457306165864946658703548529057158219466115921
+Generated in 2.070531 seconds after 412 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 2.070531 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.13 KB
+==================================================
+Inverso multiplicativo calculado em 0.000000 segundos.
+Tamanho máximo da mensagem: aproximadamente 245 bytes
+Isso equivale a cerca de 61 caracteres UTF-8 típicos
+
+==================================================
+Performance de generate_keypair:
+Tempo de execução: 3.639482 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 0.00 KB
+==================================================
+Chave pública (e): 65537
+Módulo (n): 15459018020441657110127465053298402578962087550931...
+
+Estatísticas do teste #3:
+  Tempo total de geração do par de chaves: 3.639482 segundos
+  Memória utilizada: 0.00 KB
+  Primo 1: 1024 bits, 321 tentativas, 1.568951 segundos
+  Primo 2: 1024 bits, 412 tentativas, 2.070531 segundos
+
+Teste de Miller-Rabin (verificação de primalidade):
+  Total de chamadas: 218
+  Tempo total: 3.639482 segundos
+  Tempo médio por chamada: 0.01669487 segundos
+
+==================================================
+ESTATÍSTICAS DE GERAÇÃO DE CHAVES:
+
+Geração de números primos:
+  Primo 1: 1024 bits, 321 tentativas, 1.568951 segundos
+  Primo 2: 1024 bits, 412 tentativas, 2.070531 segundos
+
+Total de números primos gerados: 2
+Tempo total de geração de primos: 3.639482 segundos
+Média de tentativas por primo: 366.5
+
+Teste de Miller-Rabin (usado na verificação de primalidade):
+  Total de chamadas: 218
+  Tempo total: 3.639482 segundos
+  Tempo médio por chamada: 0.016695 segundos
+==================================================
+
+
+TESTE #4 DE 5
+--------------------------------------------------
+Prime generated: 102599519845011447483389268035133019080246175312787703419091582050194893452629407489668042689352452047045171660534306376463703722246079209076548508118897506916768736817764807762111170618353327027357064791832718619256760374299196187145913085672880602640535024836944903560786566324292749886316606115263614495207
+Generated in 0.609921 seconds after 7 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.609921 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.67 KB
+==================================================
+Prime generated: 110860999200218404635428243341608616257759550465378540855372238887511542755982608351535631753905435770274828546263088335555167195236414832254006562788246223839608999014085394529212192321931698548183999371689012977311179744082880830864940843404070861858556126654198260339552046219786487860511858816138501393149
+Generated in 0.789767 seconds after 70 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.789767 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 15.37 KB
+==================================================
+Inverso multiplicativo calculado em 0.000000 segundos.
+Tamanho máximo da mensagem: aproximadamente 245 bytes
+Isso equivale a cerca de 61 caracteres UTF-8 típicos
+
+==================================================
+Performance de generate_keypair:
+Tempo de execução: 1.399688 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18700.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 0.00 KB
+==================================================
+Chave pública (e): 65537
+Módulo (n): 11374285287480606414173722199915765742066416633844...
+
+Estatísticas do teste #4:
+  Tempo total de geração do par de chaves: 1.399688 segundos
+  Memória utilizada: 0.00 KB
+  Primo 1: 1024 bits, 7 tentativas, 0.609921 segundos
+  Primo 2: 1024 bits, 70 tentativas, 0.789767 segundos
+
+Teste de Miller-Rabin (verificação de primalidade):
+  Total de chamadas: 26
+  Tempo total: 1.399135 segundos
+  Tempo médio por chamada: 0.05381290 segundos
+
+==================================================
+ESTATÍSTICAS DE GERAÇÃO DE CHAVES:
+
+Geração de números primos:
+  Primo 1: 1024 bits, 7 tentativas, 0.609921 segundos
+  Primo 2: 1024 bits, 70 tentativas, 0.789767 segundos
+
+Total de números primos gerados: 2
+Tempo total de geração de primos: 1.399688 segundos
+Média de tentativas por primo: 38.5
+
+Teste de Miller-Rabin (usado na verificação de primalidade):
+  Total de chamadas: 26
+  Tempo total: 1.399135 segundos
+  Tempo médio por chamada: 0.053813 segundos
+==================================================
+
+
+TESTE #5 DE 5
+--------------------------------------------------
+Prime generated: 174747371163752770126671002674110837701308043757000456677863099466524214010972949285081854711239302254208971860748374053011351918814605416521780314827729821124500034489511222459249198064153092635200552009301516546587775963692970004593630358549560244305805401971786727211301174190952560415180218355899264975611
+Generated in 5.508892 seconds after 1473 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 5.508892 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18704.00 KB
+Diferença de memória: 4.00 KB
+Pico de uso de memória (tracemalloc): 4.76 KB
+==================================================
+Prime generated: 119373218383569285754804647361674554901814788329524814083712279079014426502389081114885912055821463059204704177276988730920935962309540006679722797203084219921238378853879582137923373429948980456108227640184740095775275644184384944881493848564583388120143001379459896007930213890649624464922470501215424923033
+Generated in 0.856290 seconds after 85 attempts.
+
+==================================================
+Performance de _generate_prime:
+Tempo de execução: 0.856290 segundos
+Memória inicial: 18704.00 KB
+Memória final: 18704.00 KB
+Diferença de memória: 0.00 KB
+Pico de uso de memória (tracemalloc): 4.13 KB
+==================================================
+Inverso multiplicativo calculado em 0.000000 segundos.
+Tamanho máximo da mensagem: aproximadamente 245 bytes
+Isso equivale a cerca de 61 caracteres UTF-8 típicos
+
+==================================================
+Performance de generate_keypair:
+Tempo de execução: 6.365182 segundos
+Memória inicial: 18700.00 KB
+Memória final: 18704.00 KB
+Diferença de memória: 4.00 KB
+Pico de uso de memória (tracemalloc): 0.00 KB
+==================================================
+Chave pública (e): 65537
+Módulo (n): 20860156099885297471245381039387838447669205117976...
+Chaves exportadas para arquivos.
+
+Estatísticas do teste #5:
+  Tempo total de geração do par de chaves: 6.365182 segundos
+  Memória utilizada: 4.00 KB
+  Primo 1: 1024 bits, 1473 tentativas, 5.508892 segundos
+  Primo 2: 1024 bits, 85 tentativas, 0.856290 segundos
+
+Teste de Miller-Rabin (verificação de primalidade):
+  Total de chamadas: 449
+  Tempo total: 6.365182 segundos
+  Tempo médio por chamada: 0.01417635 segundos
+
+==================================================
+ESTATÍSTICAS DE GERAÇÃO DE CHAVES:
+
+Geração de números primos:
+  Primo 1: 1024 bits, 1473 tentativas, 5.508892 segundos
+  Primo 2: 1024 bits, 85 tentativas, 0.856290 segundos
+
+Total de números primos gerados: 2
+Tempo total de geração de primos: 6.365182 segundos
+Média de tentativas por primo: 779.0
+
+Teste de Miller-Rabin (usado na verificação de primalidade):
+  Total de chamadas: 449
+  Tempo total: 6.365182 segundos
+  Tempo médio por chamada: 0.014176 segundos
+==================================================
+
+==================================================
+RESUMO ESTATÍSTICO DA GERAÇÃO DE CHAVES (5 testes):
+
+Par de chaves RSA (2048 bits):
+  Tempo médio de geração: 2.920367 segundos
+  Tempo mínimo: 1.310800 segundos
+  Tempo máximo: 6.365182 segundos
+  Memória média utilizada: 8.00 KB
+
+Geração de números primos:
+  Tempo médio por primo: 1.460184 segundos
+  Tempo mínimo: 0.609921 segundos
+  Tempo máximo: 5.508892 segundos
+  Média de tentativas por primo: 261.7
+  Mínimo de tentativas: 7
+  Máximo de tentativas: 1473
+
+==================================================
+PERFORMANCE TOTAL DOS TESTES:
+Tempo total: 14.601836 segundos
+Memória inicial do processo: 18636.00 KB
+Memória final do processo: 18780.00 KB
+Diferença de memória: 144.00 KB
+Pico de uso de memória: 0.00 KB
+==================================================
