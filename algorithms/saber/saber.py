@@ -118,15 +118,3 @@ class Saber:
             raise RuntimeError("Key pair not generated")
         return (str(self._privkey)).encode('utf-8')
 
-
-if __name__ == "__main__":
-    saber = Saber()
-    msg = "Asford is mega mega gay 5126357@&@!#^"
-    print(f"Original: {msg}")
-
-    saber.generate_keypair()
-    ct = saber.encripty(msg)
-    print(f"Ciphertext: {ct}")
-    dec = saber.decripty(ct)
-
-    print(f"Decrypted: {dec}")

@@ -1,30 +1,30 @@
 
 RELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES SABER
-Data e hora: 2025-05-19 09:25:58
+Data e hora: 2025-05-19 09:36:15
 ==================================================
 
 
 TESTE #1 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[3371, 808, 895, 7346], [6643, 1100, 1174, 4555]], [[4154, 514, 4425, 7887], [7721, 4672, 8142, 937]]][[3199, 515, 692, 5830], [7859, 5650, 6157, 5402]]'
-Chave privada: b'[[2198, 1392, 5205, 5884], [7701, 5805, 1072, 3347]]'
+Chave pública: b'[[[2740, 3402, 2296, 1137], [18, 5820, 5233, 1585]], [[1581, 6779, 5805, 3932], [3833, 2737, 1470, 45]]][[6104, 601, 7253, 1859], [3731, 6678, 4577, 123]]'
+Chave privada: b'[[5102, 5944, 6298, 175], [679, 2032, 5808, 5223]]'
 
 Estatísticas do teste #1:
-  Tempo total de geração do par de chaves: 0.000000 segundos
+  Tempo total de geração do par de chaves: 0.001632 segundos
   Memória utilizada: 4.00 KB
 
 Operações internas:
   Poly Add: 4 chamadas, tempo total: 0.000000 segundos
-  Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
-  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+  Poly Mul: 4 chamadas, tempo total: 0.000634 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000998 segundos
 
 
 TESTE #2 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[5172, 7434, 5299, 7385], [7029, 7706, 4498, 5011]], [[36, 6634, 4963, 2225], [6714, 6014, 7478, 2882]]][[6269, 6335, 288, 2542], [3283, 6868, 7832, 2435]]'
-Chave privada: b'[[5969, 1164, 5843, 2273], [5826, 6556, 4451, 7575]]'
+Chave pública: b'[[[2305, 1139, 4534, 6482], [6873, 7054, 4629, 3835]], [[717, 7902, 3632, 4322], [3703, 7893, 556, 1218]]][[2365, 1640, 7702, 7624], [4902, 6769, 5428, 4493]]'
+Chave privada: b'[[212, 5978, 191, 7505], [1931, 7120, 6895, 7379]]'
 
 Estatísticas do teste #2:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -39,8 +39,8 @@ Operações internas:
 TESTE #3 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[5597, 1081, 5092, 906], [1227, 5769, 1125, 8145]], [[2195, 4479, 6329, 6966], [84, 4606, 2205, 4626]]][[7146, 25, 2643, 814], [1803, 1280, 1956, 7148]]'
-Chave privada: b'[[8106, 6013, 7976, 1416], [2527, 6955, 879, 5451]]'
+Chave pública: b'[[[8025, 2837, 3265, 7447], [6764, 1933, 3610, 5]], [[324, 6757, 3470, 3672], [4694, 5474, 2921, 264]]][[6654, 2474, 758, 1530], [7508, 7462, 2296, 5190]]'
+Chave privada: b'[[2407, 1221, 3175, 5633], [1617, 1513, 3825, 1793]]'
 
 Estatísticas do teste #3:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -55,24 +55,24 @@ Operações internas:
 TESTE #4 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[2613, 1521, 2905, 643], [6843, 568, 6333, 3743]], [[7472, 3210, 7319, 3467], [8076, 527, 1695, 7508]]][[6069, 555, 5512, 1149], [7097, 4110, 7977, 1490]]'
-Chave privada: b'[[2613, 7900, 7107, 4415], [5429, 3874, 5941, 6149]]'
+Chave pública: b'[[[6180, 3282, 1702, 7344], [6055, 1128, 4136, 5818]], [[6911, 5690, 233, 6587], [2158, 6234, 6850, 532]]][[5343, 5503, 3673, 3824], [7667, 6489, 14, 4346]]'
+Chave privada: b'[[1099, 2328, 5616, 7943], [2809, 4211, 4429, 6438]]'
 
 Estatísticas do teste #4:
-  Tempo total de geração do par de chaves: 0.002005 segundos
+  Tempo total de geração do par de chaves: 0.000000 segundos
   Memória utilizada: 0.00 KB
 
 Operações internas:
   Poly Add: 4 chamadas, tempo total: 0.000000 segundos
   Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
-  Random Poly: 6 chamadas, tempo total: 0.002005 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
 
 
 TESTE #5 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[6368, 134, 5103, 4055], [30, 7927, 3666, 361]], [[7693, 7460, 4814, 4170], [7227, 3837, 7304, 4202]]][[3468, 6836, 1014, 7058], [3303, 3095, 4201, 4139]]'
-Chave privada: b'[[635, 1111, 3411, 601], [7155, 3473, 7569, 501]]'
+Chave pública: b'[[[3701, 6116, 627, 1600], [2257, 3864, 4385, 6506]], [[4111, 7301, 1425, 5428], [7106, 6992, 7026, 499]]][[2316, 4171, 4522, 5723], [7606, 4212, 1531, 1408]]'
+Chave privada: b'[[3730, 7670, 28, 4096], [1340, 1704, 3738, 3881]]'
 Keys exported to 'saber_private_key.txt' and 'saber_public_key.txt'
 Chaves exportadas para arquivos.
 
@@ -91,7 +91,7 @@ RESUMO ESTATÍSTICO DA GERAÇÃO DE CHAVES (5 testes):
 Par de chaves SABER:
   Tempo mediano de geração: 0.000000 segundos
   Tempo mínimo: 0.000000 segundos
-  Tempo máximo: 0.002005 segundos
+  Tempo máximo: 0.001632 segundos
   Memória mediana utilizada: 0.00 KB
   Memória mínima: 0.00 KB
   Memória máxima: 4.00 KB
@@ -106,9 +106,9 @@ Operações básicas do algoritmo:
 
 ==================================================
 PERFORMANCE TOTAL DOS TESTES:
-Tempo total: 0.007987 segundos
-Memória inicial do processo: 18564.00 KB
-Memória final do processo: 18652.00 KB
+Tempo total: 0.001632 segundos
+Memória inicial do processo: 18876.00 KB
+Memória final do processo: 18964.00 KB
 Diferença de memória: 88.00 KB
-Pico de uso de memória: 38.42 KB
+Pico de uso de memória: 38.45 KB
 ==================================================
