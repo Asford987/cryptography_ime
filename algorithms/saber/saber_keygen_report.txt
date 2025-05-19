@@ -1,0 +1,112 @@
+
+RELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES SABER
+Data e hora: 2025-05-19 08:51:16
+==================================================
+
+
+TESTE #1 DE 5
+--------------------------------------------------
+Keypair generated.
+Chave pública: b'[[[3296, 4134, 6074, 1995], [1782, 1758, 4555, 3...
+Chave privada: b'[[3490, 7261, 7915, 474], [2134, 3238, 1775, 620...
+
+Estatísticas do teste #1:
+  Tempo total de geração do par de chaves: 0.000000 segundos
+  Memória utilizada: 8.00 KB
+
+Operações internas:
+  Poly Add: 4 chamadas, tempo total: 0.000000 segundos
+  Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+
+
+TESTE #2 DE 5
+--------------------------------------------------
+Keypair generated.
+Chave pública: b'[[[6744, 452, 715, 7836], [4972, 4253, 6277, 741...
+Chave privada: b'[[1796, 2827, 3587, 7059], [450, 327, 3551, 7506...
+
+Estatísticas do teste #2:
+  Tempo total de geração do par de chaves: 0.000000 segundos
+  Memória utilizada: 0.00 KB
+
+Operações internas:
+  Poly Add: 4 chamadas, tempo total: 0.000000 segundos
+  Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+
+
+TESTE #3 DE 5
+--------------------------------------------------
+Keypair generated.
+Chave pública: b'[[[3066, 5339, 5345, 5747], [5424, 4668, 5472, 3...
+Chave privada: b'[[5375, 7281, 5639, 5460], [3641, 4174, 5310, 62...
+
+Estatísticas do teste #3:
+  Tempo total de geração do par de chaves: 0.000000 segundos
+  Memória utilizada: 0.00 KB
+
+Operações internas:
+  Poly Add: 4 chamadas, tempo total: 0.000000 segundos
+  Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+
+
+TESTE #4 DE 5
+--------------------------------------------------
+Keypair generated.
+Chave pública: b'[[[1295, 332, 1336, 6466], [4033, 4310, 4106, 60...
+Chave privada: b'[[7628, 8156, 7405, 4121], [1327, 6924, 7536, 43...
+
+Estatísticas do teste #4:
+  Tempo total de geração do par de chaves: 0.000000 segundos
+  Memória utilizada: 0.00 KB
+
+Operações internas:
+  Poly Add: 4 chamadas, tempo total: 0.000000 segundos
+  Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+
+
+TESTE #5 DE 5
+--------------------------------------------------
+Keypair generated.
+Chave pública: b'[[[6222, 6024, 1667, 330], [1211, 768, 5991, 511...
+Chave privada: b'[[871, 833, 674, 4275], [6455, 2190, 709, 1800]]...
+
+Estatísticas do teste #5:
+  Tempo total de geração do par de chaves: 0.000000 segundos
+  Memória utilizada: 4.00 KB
+
+Operações internas:
+  Poly Add: 4 chamadas, tempo total: 0.000000 segundos
+  Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
+  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+
+==================================================
+RESUMO ESTATÍSTICO DA GERAÇÃO DE CHAVES (5 testes):
+
+Par de chaves SABER:
+  Tempo mediano de geração: 0.000000 segundos
+  Tempo mínimo: 0.000000 segundos
+  Tempo máximo: 0.000000 segundos
+  Memória mediana utilizada: 0.00 KB
+  Memória mínima: 0.00 KB
+  Memória máxima: 8.00 KB
+
+Operações básicas do algoritmo:
+  Poly Add: mediana de 4.0 chamadas por geração
+    Tempo mediano por operação: 0.00000000 segundos
+  Poly Mul: mediana de 4.0 chamadas por geração
+    Tempo mediano por operação: 0.00000000 segundos
+  Random Poly: mediana de 6.0 chamadas por geração
+    Tempo mediano por operação: 0.00000000 segundos
+
+==================================================
+PERFORMANCE TOTAL DOS TESTES:
+Tempo total: 0.015959 segundos
+Memória inicial do processo: 18084.00 KB
+Memória final do processo: 18156.00 KB
+Diferença de memória: 72.00 KB
+Pico de uso de memória: 9.96 KB
+==================================================
