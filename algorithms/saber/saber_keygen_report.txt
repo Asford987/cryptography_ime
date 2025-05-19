@@ -1,18 +1,18 @@
 
 RELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES SABER
-Data e hora: 2025-05-19 09:08:58
+Data e hora: 2025-05-19 09:25:58
 ==================================================
 
 
 TESTE #1 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[1686, 6779, 7249, 5577], [438, 3100, 1915, 3579]], [[2400, 1916, 4600, 6987], [1828, 2990, 5985, 566]]][[7527, 3261, 7664, 4457], [4167, 7604, 1656, 1926]]'
-Chave privada: b'[[1532, 3887, 1003, 865], [6515, 568, 7252, 4369]]'
+Chave pública: b'[[[3371, 808, 895, 7346], [6643, 1100, 1174, 4555]], [[4154, 514, 4425, 7887], [7721, 4672, 8142, 937]]][[3199, 515, 692, 5830], [7859, 5650, 6157, 5402]]'
+Chave privada: b'[[2198, 1392, 5205, 5884], [7701, 5805, 1072, 3347]]'
 
 Estatísticas do teste #1:
   Tempo total de geração do par de chaves: 0.000000 segundos
-  Memória utilizada: 8.00 KB
+  Memória utilizada: 4.00 KB
 
 Operações internas:
   Poly Add: 4 chamadas, tempo total: 0.000000 segundos
@@ -23,8 +23,8 @@ Operações internas:
 TESTE #2 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[2502, 73, 7890, 7525], [182, 7117, 169, 793]], [[7335, 6607, 6541, 3651], [3448, 3226, 2462, 5826]]][[7148, 3401, 6050, 6230], [4526, 4496, 5736, 2552]]'
-Chave privada: b'[[22, 1430, 2935, 531], [348, 6573, 910, 318]]'
+Chave pública: b'[[[5172, 7434, 5299, 7385], [7029, 7706, 4498, 5011]], [[36, 6634, 4963, 2225], [6714, 6014, 7478, 2882]]][[6269, 6335, 288, 2542], [3283, 6868, 7832, 2435]]'
+Chave privada: b'[[5969, 1164, 5843, 2273], [5826, 6556, 4451, 7575]]'
 
 Estatísticas do teste #2:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -39,8 +39,8 @@ Operações internas:
 TESTE #3 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[75, 1167, 2188, 2622], [5194, 319, 3302, 5722]], [[6293, 1808, 2051, 2236], [6304, 4840, 3891, 5878]]][[5891, 6129, 6129, 7928], [1113, 6812, 2867, 4765]]'
-Chave privada: b'[[6415, 1688, 7188, 2036], [3598, 1923, 2528, 3272]]'
+Chave pública: b'[[[5597, 1081, 5092, 906], [1227, 5769, 1125, 8145]], [[2195, 4479, 6329, 6966], [84, 4606, 2205, 4626]]][[7146, 25, 2643, 814], [1803, 1280, 1956, 7148]]'
+Chave privada: b'[[8106, 6013, 7976, 1416], [2527, 6955, 879, 5451]]'
 
 Estatísticas do teste #3:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -55,28 +55,30 @@ Operações internas:
 TESTE #4 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[3338, 2650, 2070, 2394], [1082, 7036, 5279, 156]], [[1465, 7410, 7204, 1482], [3447, 635, 1881, 6076]]][[2385, 5142, 6829, 543], [958, 2354, 6811, 7794]]'
-Chave privada: b'[[1174, 3444, 7584, 702], [3417, 5937, 5109, 6340]]'
+Chave pública: b'[[[2613, 1521, 2905, 643], [6843, 568, 6333, 3743]], [[7472, 3210, 7319, 3467], [8076, 527, 1695, 7508]]][[6069, 555, 5512, 1149], [7097, 4110, 7977, 1490]]'
+Chave privada: b'[[2613, 7900, 7107, 4415], [5429, 3874, 5941, 6149]]'
 
 Estatísticas do teste #4:
-  Tempo total de geração do par de chaves: 0.000000 segundos
+  Tempo total de geração do par de chaves: 0.002005 segundos
   Memória utilizada: 0.00 KB
 
 Operações internas:
   Poly Add: 4 chamadas, tempo total: 0.000000 segundos
   Poly Mul: 4 chamadas, tempo total: 0.000000 segundos
-  Random Poly: 6 chamadas, tempo total: 0.000000 segundos
+  Random Poly: 6 chamadas, tempo total: 0.002005 segundos
 
 
 TESTE #5 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[1597, 2858, 1276, 864], [3127, 2810, 583, 1537]], [[2586, 694, 2711, 3924], [2507, 7551, 6514, 7140]]][[4659, 1114, 3772, 3871], [7260, 2462, 3172, 5182]]'
-Chave privada: b'[[2100, 1159, 6398, 3035], [5329, 4026, 3094, 2667]]'
+Chave pública: b'[[[6368, 134, 5103, 4055], [30, 7927, 3666, 361]], [[7693, 7460, 4814, 4170], [7227, 3837, 7304, 4202]]][[3468, 6836, 1014, 7058], [3303, 3095, 4201, 4139]]'
+Chave privada: b'[[635, 1111, 3411, 601], [7155, 3473, 7569, 501]]'
+Keys exported to 'saber_private_key.txt' and 'saber_public_key.txt'
+Chaves exportadas para arquivos.
 
 Estatísticas do teste #5:
   Tempo total de geração do par de chaves: 0.000000 segundos
-  Memória utilizada: 4.00 KB
+  Memória utilizada: 0.00 KB
 
 Operações internas:
   Poly Add: 4 chamadas, tempo total: 0.000000 segundos
@@ -89,10 +91,10 @@ RESUMO ESTATÍSTICO DA GERAÇÃO DE CHAVES (5 testes):
 Par de chaves SABER:
   Tempo mediano de geração: 0.000000 segundos
   Tempo mínimo: 0.000000 segundos
-  Tempo máximo: 0.000000 segundos
+  Tempo máximo: 0.002005 segundos
   Memória mediana utilizada: 0.00 KB
   Memória mínima: 0.00 KB
-  Memória máxima: 8.00 KB
+  Memória máxima: 4.00 KB
 
 Operações básicas do algoritmo:
   Poly Add: mediana de 4.0 chamadas por geração
@@ -104,9 +106,9 @@ Operações básicas do algoritmo:
 
 ==================================================
 PERFORMANCE TOTAL DOS TESTES:
-Tempo total: 0.000000 segundos
-Memória inicial do processo: 18116.00 KB
-Memória final do processo: 18188.00 KB
-Diferença de memória: 72.00 KB
-Pico de uso de memória: 10.65 KB
+Tempo total: 0.007987 segundos
+Memória inicial do processo: 18564.00 KB
+Memória final do processo: 18652.00 KB
+Diferença de memória: 88.00 KB
+Pico de uso de memória: 38.42 KB
 ==================================================

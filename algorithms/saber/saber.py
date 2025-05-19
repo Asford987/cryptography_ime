@@ -88,6 +88,23 @@ class Saber:
 
         return message
             
+    def export_keys(self):
+        """
+        Exporta as chaves pública e privada para arquivos de texto.
+        """
+        if not self._generated:
+            raise RuntimeError("Key pair not generated")
+            
+        with open('saber_private_key.txt', 'w') as f1:
+            f1.write(f"---------- Saber Private Key ----------\n\n")
+            f1.write(f"s: {self._privkey}\n")
+            
+        with open('saber_public_key.txt', 'w') as f2:
+            f2.write(f"---------- Saber Public Key ----------\n\n")
+            f2.write(f"A: {self._pubkey[0]}\n")
+            f2.write(f"b: {self._pubkey[1]}\n")
+        
+        print("Keys exported to 'saber_private_key.txt' and 'saber_public_key.txt'")
 
     @property
     def public_key(self):

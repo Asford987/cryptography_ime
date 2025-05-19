@@ -139,6 +139,11 @@ def main():
             except Exception as e:
                 print(f"Erro ao exibir chaves: {str(e)}")
                 
+            # Exportar chaves somente no último teste
+            if i == num_testes - 1:
+                saber_instance.export_keys()
+                print("Chaves exportadas para arquivos.")
+                
             # Exibir estatísticas específicas da geração de chaves
             print(f"\nEstatísticas do teste #{i+1}:")
             print(f"  Tempo total de geração do par de chaves: {tempo_geracao:.6f} segundos")
