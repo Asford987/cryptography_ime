@@ -6,6 +6,18 @@ import psutil
 import tracemalloc
 from rsa import RSA
 
+def calculate_median(numbers):
+    """
+    Calcula a mediana de uma lista de números.
+    """
+    sorted_numbers = sorted(numbers)
+    n = len(sorted_numbers)
+    if n == 0:
+        return 0
+    if n % 2 == 0:
+        return (sorted_numbers[n//2 - 1] + sorted_numbers[n//2]) / 2
+    return sorted_numbers[n//2]
+
 def main():
     """
     Executa apenas a geração de chaves RSA de 2048 bits e salva o relatório de desempenho,
@@ -117,15 +129,15 @@ def main():
         end_memory = process.memory_info().rss / 1024  # KB
         
         # Calcular estatísticas finais
-        tempo_medio = sum(tempos_geracao) / len(tempos_geracao)
+        tempo_mediano = calculate_median(tempos_geracao)
         tempo_min = min(tempos_geracao)
         tempo_max = max(tempos_geracao)
         
-        memoria_media = sum(memoria_geracao) / len(memoria_geracao)
+        memoria_mediana = calculate_median(memoria_geracao)
         memoria_min = min(memoria_geracao)
         memoria_max = max(memoria_geracao)
         
-        # Calcular médias para tempos e tentativas de primos
+        # Calcular medianas para tempos e tentativas de primos
         total_tentativas = []
         total_tempos_primos = []
         
@@ -135,11 +147,11 @@ def main():
         for lista in tempos_primos:
             total_tempos_primos.extend(lista)
         
-        primo_tentativas_media = sum(total_tentativas) / len(total_tentativas)
+        primo_tentativas_mediana = calculate_median(total_tentativas)
         primo_tentativas_min = min(total_tentativas)
         primo_tentativas_max = max(total_tentativas)
         
-        primo_tempo_medio = sum(total_tempos_primos) / len(total_tempos_primos)
+        primo_tempo_mediano = calculate_median(total_tempos_primos)
         primo_tempo_min = min(total_tempos_primos)
         primo_tempo_max = max(total_tempos_primos)
         
@@ -148,16 +160,16 @@ def main():
         print(f"RESUMO ESTATÍSTICO DA GERAÇÃO DE CHAVES ({num_testes} testes):")
         
         print(f"\nPar de chaves RSA (2048 bits):")
-        print(f"  Tempo médio de geração: {tempo_medio:.6f} segundos")
+        print(f"  Tempo mediano de geração: {tempo_mediano:.6f} segundos")
         print(f"  Tempo mínimo: {tempo_min:.6f} segundos")
         print(f"  Tempo máximo: {tempo_max:.6f} segundos")
-        print(f"  Memória média utilizada: {memoria_media:.2f} KB")
+        print(f"  Memória mediana utilizada: {memoria_mediana:.2f} KB")
         
         print(f"\nGeração de números primos:")
-        print(f"  Tempo médio por primo: {primo_tempo_medio:.6f} segundos")
+        print(f"  Tempo mediano por primo: {primo_tempo_mediano:.6f} segundos")
         print(f"  Tempo mínimo: {primo_tempo_min:.6f} segundos")
         print(f"  Tempo máximo: {primo_tempo_max:.6f} segundos")
-        print(f"  Média de tentativas por primo: {primo_tentativas_media:.1f}")
+        print(f"  Mediana de tentativas por primo: {primo_tentativas_mediana:.1f}")
         print(f"  Mínimo de tentativas: {primo_tentativas_min}")
         print(f"  Máximo de tentativas: {primo_tentativas_max}")
         
