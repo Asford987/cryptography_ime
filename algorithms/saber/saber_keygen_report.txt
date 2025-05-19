@@ -1,14 +1,14 @@
 
 RELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES SABER
-Data e hora: 2025-05-19 08:51:16
+Data e hora: 2025-05-19 09:08:58
 ==================================================
 
 
 TESTE #1 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[3296, 4134, 6074, 1995], [1782, 1758, 4555, 3...
-Chave privada: b'[[3490, 7261, 7915, 474], [2134, 3238, 1775, 620...
+Chave pública: b'[[[1686, 6779, 7249, 5577], [438, 3100, 1915, 3579]], [[2400, 1916, 4600, 6987], [1828, 2990, 5985, 566]]][[7527, 3261, 7664, 4457], [4167, 7604, 1656, 1926]]'
+Chave privada: b'[[1532, 3887, 1003, 865], [6515, 568, 7252, 4369]]'
 
 Estatísticas do teste #1:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -23,8 +23,8 @@ Operações internas:
 TESTE #2 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[6744, 452, 715, 7836], [4972, 4253, 6277, 741...
-Chave privada: b'[[1796, 2827, 3587, 7059], [450, 327, 3551, 7506...
+Chave pública: b'[[[2502, 73, 7890, 7525], [182, 7117, 169, 793]], [[7335, 6607, 6541, 3651], [3448, 3226, 2462, 5826]]][[7148, 3401, 6050, 6230], [4526, 4496, 5736, 2552]]'
+Chave privada: b'[[22, 1430, 2935, 531], [348, 6573, 910, 318]]'
 
 Estatísticas do teste #2:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -39,8 +39,8 @@ Operações internas:
 TESTE #3 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[3066, 5339, 5345, 5747], [5424, 4668, 5472, 3...
-Chave privada: b'[[5375, 7281, 5639, 5460], [3641, 4174, 5310, 62...
+Chave pública: b'[[[75, 1167, 2188, 2622], [5194, 319, 3302, 5722]], [[6293, 1808, 2051, 2236], [6304, 4840, 3891, 5878]]][[5891, 6129, 6129, 7928], [1113, 6812, 2867, 4765]]'
+Chave privada: b'[[6415, 1688, 7188, 2036], [3598, 1923, 2528, 3272]]'
 
 Estatísticas do teste #3:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -55,8 +55,8 @@ Operações internas:
 TESTE #4 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[1295, 332, 1336, 6466], [4033, 4310, 4106, 60...
-Chave privada: b'[[7628, 8156, 7405, 4121], [1327, 6924, 7536, 43...
+Chave pública: b'[[[3338, 2650, 2070, 2394], [1082, 7036, 5279, 156]], [[1465, 7410, 7204, 1482], [3447, 635, 1881, 6076]]][[2385, 5142, 6829, 543], [958, 2354, 6811, 7794]]'
+Chave privada: b'[[1174, 3444, 7584, 702], [3417, 5937, 5109, 6340]]'
 
 Estatísticas do teste #4:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -71,8 +71,8 @@ Operações internas:
 TESTE #5 DE 5
 --------------------------------------------------
 Keypair generated.
-Chave pública: b'[[[6222, 6024, 1667, 330], [1211, 768, 5991, 511...
-Chave privada: b'[[871, 833, 674, 4275], [6455, 2190, 709, 1800]]...
+Chave pública: b'[[[1597, 2858, 1276, 864], [3127, 2810, 583, 1537]], [[2586, 694, 2711, 3924], [2507, 7551, 6514, 7140]]][[4659, 1114, 3772, 3871], [7260, 2462, 3172, 5182]]'
+Chave privada: b'[[2100, 1159, 6398, 3035], [5329, 4026, 3094, 2667]]'
 
 Estatísticas do teste #5:
   Tempo total de geração do par de chaves: 0.000000 segundos
@@ -104,9 +104,9 @@ Operações básicas do algoritmo:
 
 ==================================================
 PERFORMANCE TOTAL DOS TESTES:
-Tempo total: 0.015959 segundos
-Memória inicial do processo: 18084.00 KB
-Memória final do processo: 18156.00 KB
+Tempo total: 0.000000 segundos
+Memória inicial do processo: 18116.00 KB
+Memória final do processo: 18188.00 KB
 Diferença de memória: 72.00 KB
-Pico de uso de memória: 9.96 KB
+Pico de uso de memória: 10.65 KB
 ==================================================

@@ -134,12 +134,8 @@ def main():
                 pubkey = saber_instance.public_key
                 privkey = saber_instance.private_key
                 
-                # Formatar números grandes para melhor legibilidade
-                def format_big_num(num):
-                    return str(num)[:50] + "..." if len(str(num)) > 50 else str(num)
-                
-                print(f"Chave pública: {format_big_num(pubkey)}")
-                print(f"Chave privada: {format_big_num(privkey)}")
+                print(f"Chave pública: {pubkey}")
+                print(f"Chave privada: {privkey}")
             except Exception as e:
                 print(f"Erro ao exibir chaves: {str(e)}")
                 
