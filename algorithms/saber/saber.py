@@ -6,21 +6,41 @@ class Saber:
         self.q = 8192
         self.p = 1024
         self.n = 256
-        self.l = 2
+        self.l = 3
+        self.eta = 4 
 
         self._generated = False
         self._pubkey = None
         self._privkey = None
 
-    def _sample_noise_poly(self, eta=3):
+    def _sample_noise_poly(self):
         return [
-            sum(random.getrandbits(1) for _ in range(eta)) -
-            sum(random.getrandbits(1) for _ in range(eta))
+            sum(random.getrandbits(1) for _ in range(self.eta)) -
+            sum(random.getrandbits(1) for _ in range(self.eta))
             for _ in range(self.n)
         ]
+        
+    def _round_message(self, m):
+        return (m * (self.q // self.p)) % self.q
+
+    def _recover_message(self, x):
+        return int((x * self.p + self.q // 2) // self.q) % self.p
 
     def _poly_add(self, a, b):
         return [(x + y) % self.q for x, y in zip(a, b)]
+    
+    def _encode_message(self, message: str):
+        bits = []
+        for c in message.encode('utf-8'):
+            bits += [(c >> i) & 1 for i in range(8)]
+        return bits
+    
+    def _decode_message(self, bits):
+        bytes_out = []
+        for i in range(0, len(bits), 8):
+            byte = sum([bits[i + j] << j for j in range(8) if i + j < len(bits)])
+            bytes_out.append(byte)
+        return bytes(bytes_out).decode('utf-8', errors='ignore')
 
     def _poly_mul(self, a, b):
         res = [0] * (2 * self.n - 1)
@@ -54,9 +74,12 @@ class Saber:
         A, b = self._pubkey
         ciphertext = []
 
-        for ch in message:
-            m = ord(ch) % self.p
-            sp = [self._sample_noise_poly() for _ in range(self.l)]
+        bits = []
+        for byte in message.encode('utf-8'):
+            bits.extend([(byte >> i) & 1 for i in range(8)])
+
+        for bit in bits:
+            sp = [self._sample_noise_poly(self.eta) for _ in range(self.l)]
 
             bp = []
             for i in range(self.l):
@@ -69,7 +92,8 @@ class Saber:
             for i in range(self.l):
                 vp = self._poly_add(vp, self._poly_mul(b[i], sp[i]))
 
-            vp[0] = (vp[0] + (m * (self.q // self.p))) % self.q
+            vp[0] = (vp[0] + (bit * (self.q // self.p))) % self.q
+
             ciphertext.append((bp, vp))
 
         return ciphertext
@@ -79,7 +103,7 @@ class Saber:
             raise RuntimeError("Key pair not generated")
 
         s = self._privkey
-        message = ""
+        bits = []
 
         for bp, vp in ciphertext:
             v = [0] * self.n
@@ -87,10 +111,18 @@ class Saber:
                 v = self._poly_add(v, self._poly_mul(bp[i], s[i]))
 
             diff = (vp[0] - v[0]) % self.q
-            m = int((diff * self.p) / self.q) % self.p
-            message += chr(m)
+            bit = int((diff * self.p + self.q // 2) // self.q) % self.p
+            bits.append(bit if bit < 2 else 0)
 
-        return message
+        bytes_out = []
+        for i in range(0, len(bits), 8):
+            byte = 0
+            for j in range(8):
+                if i + j < len(bits):
+                    byte |= (bits[i + j] << j)
+            bytes_out.append(byte)
+
+        return bytes(bytes_out).decode('utf-8', errors='ignore')
             
     def export_keys(self):
         """
