@@ -12,8 +12,12 @@ class Saber:
         self._pubkey = None
         self._privkey = None
 
-    def _random_poly(self):
-        return [random.randint(0, self.q - 1) for _ in range(self.n)]
+    def _sample_noise_poly(self, eta=3):
+        return [
+            sum(random.getrandbits(1) for _ in range(eta)) -
+            sum(random.getrandbits(1) for _ in range(eta))
+            for _ in range(self.n)
+        ]
 
     def _poly_add(self, a, b):
         return [(x + y) % self.q for x, y in zip(a, b)]
@@ -28,8 +32,8 @@ class Saber:
         return [x % self.q for x in res[:self.n]]
 
     def generate_keypair(self, *args, **kwargs):
-        A = [[self._random_poly() for _ in range(self.l)] for _ in range(self.l)]
-        s = [self._random_poly() for _ in range(self.l)]
+        A = [[self._sample_noise_poly() for _ in range(self.l)] for _ in range(self.l)]
+        s = [self._sample_noise_poly() for _ in range(self.l)]
 
         b = []
         for i in range(self.l):
@@ -52,7 +56,7 @@ class Saber:
 
         for ch in message:
             m = ord(ch) % self.p
-            sp = [self._random_poly() for _ in range(self.l)]
+            sp = [self._sample_noise_poly() for _ in range(self.l)]
 
             bp = []
             for i in range(self.l):
