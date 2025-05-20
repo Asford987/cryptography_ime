@@ -5,7 +5,7 @@ class Saber:
     def __init__(self):
         self.q = 8192
         self.p = 1024
-        self.n = 4
+        self.n = 256
         self.l = 2
 
         self._generated = False
