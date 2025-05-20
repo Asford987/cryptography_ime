@@ -105,7 +105,7 @@ class RSA:
 
 
     @measure_performance
-    def generate_keypair(self, bits=2048):
+    def generate_keypair(self, bits=3072):
         """
         Gera um par de chaves RSA.
         Para mensagens grandes, é recomendado usar bits >= 2048.
