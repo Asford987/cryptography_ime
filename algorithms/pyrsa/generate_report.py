@@ -20,7 +20,7 @@ def calculate_median(numbers):
 
 def main():
     """
-    Executa apenas a geração de chaves RSA de 2048 bits e salva o relatório de desempenho,
+    Executa apenas a geração de chaves RSA de 3072 bits e salva o relatório de desempenho,
     focando apenas nos métodos _generate_prime e generate_keypair
     """
     # Nome do arquivo de relatório
@@ -32,7 +32,7 @@ def main():
     sys.stdout = output
     
     try:
-        print("\nRELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES RSA DE 2048 BITS")
+        print("\nRELATÓRIO DE DESEMPENHO - GERAÇÃO DE CHAVES RSA DE 3072 BITS")
         print(f"Data e hora: {time.strftime('%Y-%m-%d %H:%M:%S')}")
         print("=" * 50)
         
@@ -64,7 +64,7 @@ def main():
             inicio_tempo = time.time()
             
             # Gerar par de chaves
-            rsa_instance.generate_keypair(bits=2048)
+            rsa_instance.generate_keypair(bits=3072)
             
             # Calcular tempo e memória finais
             fim_tempo = time.time()
@@ -159,7 +159,7 @@ def main():
         print(f"\n{'='*50}")
         print(f"RESUMO ESTATÍSTICO DA GERAÇÃO DE CHAVES ({num_testes} testes):")
         
-        print(f"\nPar de chaves RSA (2048 bits):")
+        print(f"\nPar de chaves RSA (3072 bits):")
         print(f"  Tempo mediano de geração: {tempo_mediano:.6f} segundos")
         print(f"  Tempo mínimo: {tempo_min:.6f} segundos")
         print(f"  Tempo máximo: {tempo_max:.6f} segundos")
